@@ -4,7 +4,7 @@ import parseISO from 'date-fns/parseISO';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';  
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/converteDurationToTimeString';
 
@@ -28,6 +28,9 @@ type EpisodeProps = {
 
 
 export default function Episode({ episode }: EpisodeProps) {
+
+    const { play } = usePlayer();
+
     return (
         <div className={styles.container}>
             <div className={styles.episodes}>
@@ -38,7 +41,7 @@ export default function Episode({ episode }: EpisodeProps) {
                         </button>
                     </Link>
                     <Image width={700} height={160} src={episode.thumbnail} objectFit="cover"/>
-                    <button type="button">
+                    <button type="button" onClick={() => play(episode)}>
                         <img src="/play.svg" alt="Tocar episódio"/>
                     </button>
                 </div>

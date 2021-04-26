@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { useContext } from 'react';
-import { PlayerContext } from '../contexts/PlayerContext';
+import { PlayerContext, usePlayer } from '../contexts/PlayerContext';
 
 import { api } from '../services/api';
 import { convertDurationToTimeString } from '../utils/converteDurationToTimeString';
@@ -30,7 +30,7 @@ type HomeProps = {
 
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
-  const { playList }  = useContext(PlayerContext);
+  const { playList }  = usePlayer();
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
 
