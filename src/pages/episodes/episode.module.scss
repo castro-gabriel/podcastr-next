@@ -1,3 +1,9 @@
+.container {
+    width: 100%;
+    height: calc(100vh - 6.5rem);
+    overflow-y: scroll;
+}
+
 .episodes {
     max-width: 45rem;
     padding: 3rem 2rem;
