@@ -4,6 +4,7 @@ import parseISO from 'date-fns/parseISO';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';  
 import Link from 'next/link';
+import Head from 'next/head';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/converteDurationToTimeString';
@@ -33,6 +34,11 @@ export default function Episode({ episode }: EpisodeProps) {
 
     return (
         <div className={styles.container}>
+
+        <Head>
+            <title>{episode.title} | Podcastr</title>
+        </Head>
+
             <div className={styles.episodes}>
                 <div className={styles.thumbnailContainer}>
                     <Link href="/">
